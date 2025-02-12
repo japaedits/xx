@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pergunta Especial</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: white;
+            color: black;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        video, img {
+            width: auto;
+            height: 300px;
+            display: block;
+        }
+        h1 {
+            margin-top: 20px;
+            font-size: 2rem;
+            color: rgb(0, 0, 0);
+        }
+        h2 {
+            font-size: 1.5rem;
+            color: rgb(50, 50, 50);
+            margin-bottom: 10px;
+        }
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+        }
+        button {
+            font-size: 1.5rem;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .yes {
+            background-color: green;
+            color: white;
+        }
+        .no {
+            background-color: red;
+            color: white;
+        }
+        #gif {
+            display: none;
+        }
+        #final-screen {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="main-screen">
+        <h2>OLHA A HISTORINHA ANTES DE RESPONDER</h2>
+        <video id="video" src="cat11.mp4" autoplay loop muted></video>
+        <img id="gif" src="cat3.gif" alt="Reação">
+        <h1>Posso ser seu gay? Eu quero ser seu</h1>
+        <div class="buttons">
+            <button class="yes" id="yes">SIM</button>
+            <button class="no" id="no">NÃO</button>
+        </div>
+    </div>
+    
+    <div id="final-screen">
+        <img src="cat2.gif" alt="Final">
+        <h1>Você é minha gay, é isso</h1>
+    </div>
+
+    <script>
+        let yesButton = document.getElementById("yes");
+        let noButton = document.getElementById("no");
+        let video = document.getElementById("video");
+        let gif = document.getElementById("gif");
+        let mainScreen = document.getElementById("main-screen");
+        let finalScreen = document.getElementById("final-screen");
+        let size = 1;
+
+        noButton.addEventListener("click", () => {
+            video.style.display = "none";
+            gif.style.display = "block";
+            setTimeout(() => {
+                gif.style.display = "none";
+                video.style.display = "block";
+            }, 3000);
+            size += 0.2;
+            yesButton.style.transform = `scale(${size})`;
+        });
+
+        yesButton.addEventListener("click", () => {
+            mainScreen.style.display = "none";
+            finalScreen.style.display = "flex";
+        });
+    </script>
+</body>
+</html>
